@@ -3,16 +3,16 @@ from ape import plugins
 
 @plugins.register(plugins.Config)
 def config_class():
-    from .ecosystem import FantomConfig
+    from .ecosystem import SonicConfig
 
-    return FantomConfig
+    return SonicConfig
 
 
 @plugins.register(plugins.EcosystemPlugin)
 def ecosystems():
-    from .ecosystem import Fantom
+    from .ecosystem import Sonic
 
-    yield Fantom
+    yield Sonic
 
 
 @plugins.register(plugins.NetworkPlugin)
@@ -27,11 +27,11 @@ def networks():
     from .ecosystem import NETWORKS
 
     for network_name, network_params in NETWORKS.items():
-        yield "fantom", network_name, create_network_type(*network_params)
-        yield "fantom", f"{network_name}-fork", ForkedNetworkAPI
+        yield "sonic", network_name, create_network_type(*network_params)
+        yield "sonic", f"{network_name}-fork", ForkedNetworkAPI
 
     # NOTE: This works for development providers, as they get chain_id from themselves
-    yield "fantom", LOCAL_NETWORK_NAME, NetworkAPI
+    yield "sonic", LOCAL_NETWORK_NAME, NetworkAPI
 
 
 @plugins.register(plugins.ProviderPlugin)
@@ -43,9 +43,9 @@ def providers():
     from .ecosystem import NETWORKS
 
     for network_name in NETWORKS:
-        yield "fantom", network_name, Node
+        yield "sonic", network_name, Node
 
-    yield "fantom", LOCAL_NETWORK_NAME, LocalProvider
+    yield "sonic", LOCAL_NETWORK_NAME, LocalProvider
 
 
 def __getattr__(name: str):
@@ -55,14 +55,14 @@ def __getattr__(name: str):
         return NETWORKS
 
     elif name == "Fantom":
-        from .ecosystem import Fantom
+        from .ecosystem import Sonic
 
-        return Fantom
+        return Sonic
 
-    elif name == "FantomConfig":
-        from .ecosystem import FantomConfig
+    elif name == "SonicConfig":
+        from .ecosystem import SonicConfig
 
-        return FantomConfig
+        return SonicConfig
 
     else:
         raise AttributeError(name)

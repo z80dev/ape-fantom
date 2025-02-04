@@ -52,27 +52,27 @@ with open("./README.md") as readme:
 
 
 setup(
-    name="ape-fantom",
+    name="ape-sonic",
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
-    description="""ape-fantom: Ape Ecosystem Plugin for Fantom""",
+    description="""ape-sonic: Ape Ecosystem Plugin for Sonic""",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="ApeWorX Ltd.",
     author_email="admin@apeworx.io",
-    url="https://github.com/ApeWorX/ape-fantom",
+    url="https://github.com/ApeWorX/ape-sonic",
     include_package_data=True,
     install_requires=[
         "eth-ape>=0.8.18,<0.9",
     ],
     python_requires=">=3.9,<4",
     extras_require=extras_require,
-    py_modules=["ape_fantom"],
+    py_modules=["ape_sonic"],
     license="Apache-2.0",
     zip_safe=False,
     keywords="ethereum",
     packages=find_packages(exclude=["tests", "tests.*"]),
-    package_data={"ape_fantom": ["py.typed"]},
+    package_data={"ape_sonic": ["py.typed"]},
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

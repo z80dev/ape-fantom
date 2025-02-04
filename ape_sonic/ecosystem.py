@@ -9,12 +9,12 @@ from ape_ethereum.ecosystem import (
 
 NETWORKS = {
     # chain_id, network_id
-    "opera": (250, 250),
-    "testnet": (4002, 4002),
+    "mainnet": (146, 146),
+    "testnet": (57054, 57054),
 }
 
 
-class FantomConfig(BaseEthereumConfig):
+class SonicConfig(BaseEthereumConfig):
     NETWORKS: ClassVar[dict[str, tuple[int, int]]] = NETWORKS
     opera: NetworkConfig = create_network_config(
         block_time=0, required_confirmations=0, is_mainnet=True
@@ -22,9 +22,9 @@ class FantomConfig(BaseEthereumConfig):
     testnet: NetworkConfig = create_network_config(block_time=0, required_confirmations=0)
 
 
-class Fantom(Ethereum):
-    fee_token_symbol: str = "FTM"
+class Sonic(Ethereum):
+    fee_token_symbol: str = "S"
 
     @property
-    def config(self) -> FantomConfig:  # type: ignore[override]
-        return cast(FantomConfig, self.config_manager.get_config("fantom"))
+    def config(self) -> SonicConfig:  # type: ignore[override]
+        return cast(SonicConfig, self.config_manager.get_config("fantom"))
